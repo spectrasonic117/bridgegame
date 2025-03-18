@@ -6,7 +6,7 @@ import com.spectrasonic.bridgegame.Main;
 import com.spectrasonic.bridgegame.Tasks.BridgeGameTask;
 import org.bukkit.entity.Player;
 
-@CommandAlias("bridgegame|bg")
+@CommandAlias("bridgegame")
 public class BridgeGameCommand extends BaseCommand {
 
     private final Main plugin;
@@ -40,7 +40,8 @@ public class BridgeGameCommand extends BaseCommand {
         plugin.getGameTask().cancel();
         plugin.setGameTask(null);
         player.sendMessage("Deteniendo BridgeGame...");
-        player.performCommand("/schematic loadall puente_barriers.schem");
+        // Usar el flag -q para suprimir los mensajes de FAWE
+        player.performCommand("/schematic load puente_visible.schem");
         player.performCommand("/paste -o");
     }
 }
