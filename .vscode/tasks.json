@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "type": "gradle",
+            "id": "/Users/spectra/Desktop/bridgegamebuildbridgegame",
+            "script": "build",
+            "description": "Assembles and tests this project.",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "project": "bridgegame",
+            "buildFile": "/Users/spectra/Desktop/bridgegame/build.gradle",
+            "rootProject": "bridgegame",
+            "projectFolder": "/Users/spectra/Desktop/bridgegame",
+            "workspaceFolder": "/Users/spectra/Desktop/bridgegame",
+            "args": "",
+            "javaDebug": false,
+            "problemMatcher": [
+                "$gradle"
+            ],
+            "label": "gradle: build"
+        }
+    ]
+}
