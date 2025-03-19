@@ -25,10 +25,15 @@ public class BridgeGameCommand extends BaseCommand {
             return;
         }
         player.sendMessage("Iniciando BridgeGame...");
+
         // Iniciar la tarea repetitiva del minijuego con el jugador como referencia
         BridgeGameTask task = new BridgeGameTask(plugin, player);
         plugin.setGameTask(task);
         task.runTaskTimer(plugin, 0L, 1L); // Se ejecuta cada tick
+
+        // Activate the teleport task
+        plugin.getTeleportTask().activate();
+        player.sendMessage("§aSistema de teletransporte activado.");
     }
 
     @Subcommand("stop")
@@ -38,10 +43,17 @@ public class BridgeGameCommand extends BaseCommand {
             player.sendMessage("El minijuego no está en ejecución.");
             return;
         }
+
         // Cancelar la tarea y ejecutar la secuencia final de comandos
         plugin.getGameTask().cancel();
         plugin.setGameTask(null);
+
+        // Deactivate the teleport task
+        plugin.getTeleportTask().deactivate();
+
         player.sendMessage("Deteniendo BridgeGame...");
+        player.sendMessage("§cSistema de teletransporte desactivado.");
+
         // Usar el flag -q para suprimir los mensajes de FAWE
         player.performCommand("/schematic load puente_visible.schem");
         player.performCommand("/paste -o");
@@ -58,7 +70,7 @@ public class BridgeGameCommand extends BaseCommand {
         }
 
         // Spawn the particle sphere
-        ParticleUtils.spawnEndRodSphereAroundPlayer(player, size);
+        ParticleUtils.spawnParticleSphereAroundPlayer(player, size);
 
         // Send confirmation message
         MessageUtils.sendMessage(player,

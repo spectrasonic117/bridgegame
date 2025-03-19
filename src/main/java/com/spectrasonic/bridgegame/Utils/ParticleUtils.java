@@ -70,7 +70,7 @@ public final class ParticleUtils {
      * @param center The center location of the sphere
      * @param size   The size of the sphere (5, 10, or 15)
      */
-    public static void spawnEndRodSphere(Location center, int size) {
+    public static void spawnParticleSphere(Location center, int size) {
         // Validate size
         int radius;
         int particleCount;
@@ -78,32 +78,32 @@ public final class ParticleUtils {
         switch (size) {
             case 5:
                 radius = 5;
-                particleCount = 100;
+                particleCount = 300;
                 break;
             case 10:
                 radius = 10;
-                particleCount = 200;
+                particleCount = 500;
                 break;
             case 15:
                 radius = 15;
-                particleCount = 300;
+                particleCount = 700;
                 break;
             default:
                 radius = 5;
-                particleCount = 100;
+                particleCount = 300;
         }
 
-        spawnSphere(center, radius, Particle.END_ROD, particleCount);
+        spawnSphere(center, radius, Particle.WAX_ON, particleCount);
     }
 
     /**
-     * Spawns END_ROD particles in a sphere shape around a player with predefined
+     * Spawns WAX_ON particles in a sphere shape around a player with predefined
      * sizes
      * 
      * @param player The player to spawn particles around
      * @param size   The size of the sphere (5, 10, or 15)
      */
-    public static void spawnEndRodSphereAroundPlayer(Player player, int size) {
-        spawnEndRodSphere(player.getLocation(), size);
+    public static void spawnParticleSphereAroundPlayer(Player player, int size) {
+        spawnParticleSphere(player.getLocation(), size);
     }
 }
