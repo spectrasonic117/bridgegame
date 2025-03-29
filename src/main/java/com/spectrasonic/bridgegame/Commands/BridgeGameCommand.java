@@ -44,6 +44,9 @@ public class BridgeGameCommand extends BaseCommand {
             return;
         }
 
+        // Clear the point tracking
+        plugin.getPlayersWhoGotPoint().clear();
+    
         // Cancelar la tarea y ejecutar la secuencia final de comandos
         plugin.getGameTask().cancel();
         plugin.setGameTask(null);
