@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.spectrasonic"
-version = "Spectra-1.0.2"
+version = "1.0.2"
 
 repositories {
     gradlePluginPortal()
@@ -64,7 +64,7 @@ shadowJar {
     relocate "co.aikar.commands", "com.spectrasonic.bridgegame.acf"
     relocate "co.aikar.locales", "com.spectrasonic.bridgegame.locales"
     destinationDirectory = file("${rootDir}/out")
-    archiveFileName = "${rootProject.name}-${version}.jar" 
+    archiveFileName = "Spectra-${rootProject.name}-${version}.jar" 
 }
 
 build.dependsOn shadowJar
