@@ -2,6 +2,7 @@ package com.spectrasonic.bridgegame.Tasks;
 
 import com.spectrasonic.bridgegame.Main;
 import com.spectrasonic.bridgegame.Utils.SoundUtils;
+import com.spectrasonic.bridgegame.Utils.TeleportEffectUtils;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -39,8 +40,13 @@ public class TeleportTask extends BukkitRunnable {
 
             // Check if the block is black stained glass
             if (blockLoc.getBlock().getType() == Material.BLACK_STAINED_GLASS) {
-                // Teleport the player to the destination
+                // Create the double spiral effect at the teleport destination
+                TeleportEffectUtils.createDNAHelix(plugin, teleportDestination, 3.0, 20);
+
+                // Play teleport sound
                 SoundUtils.playerSound(player, Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 1.0f);
+
+                // Teleport the player to the destination
                 player.teleport(teleportDestination);
                 player.sendMessage("§6¡Has sido teletransportado!");
             }
